@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Text To Speech Converter</title>
+<meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="wrapper">
+        <header>Text To Speech</header>
+        <form action="#">
+            <div class="row">
+              <hr width=100%>
+                  <p>Enter Text Below</p>
+              <hr width=100%>
+              <textarea Id = "text1"></textarea>
+            </div>
+        <button Id="btn1">Convert To Speech</button>
+      </form>
+  </div> 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Shantell-Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    min-height: 100vh;
+    background: #000;
+    background-image: url("bg2.gif"), url("snow.gif");
+    background-blend-mode: screen;
+    background-size: cover;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+::selection {
+    color: #5256AD;
+    background: #5256AD;
+}
+
+.wrapper{
+  width: 331px;
+  height: 498px;
+    padding: 25px 30px;
+    border: 3px double #800080;
+    border-radius: 8px;
+    background: black;
+    background-image: url("bg2.gif");
+    background-position: center;
+    box-shadow: 0px 0px 4px 7px #000;
+    outline-style: double #ffffff;
+}
+
+.wrapper header {
+    font-size: 29px;
+    font-weight: 400;
+    align-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 4px #800080;
+    background-color: linear-gradient(to top right, #452c63, #4B0082, #800080, #662d91, #720e9e, #452c63);
+    border: double 4px #800080;
+    opacity: 0.8;
+    vertical-align: middle;
+    box-shadow: 0px 0px 8px 4px purple;
+}
+
+.wrapper form {
+    background-image: url("bg2.gif");
+    background-position: center;
+    margin: 25px 0 10px;
+    font-weight: 300;
+    font-size: 20px;
+    text-align: center;
+    align-content: center;
+    opacity: 0.8;
+    vertical-align: middle;
+    border-radius: 5px;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+}
+
+.wrapper form .row {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-content: center;
+    opacity: 0.8;
+    vertical-align: middle;
+    margin: 40px;
+}
+
+.wrapper form .row p {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: 4px double #4B0082;
+    width: 100%;
+    background-color: linear-gradient(#00d5ff,#5e9abb, #5e6bbb, #00d5ff);
+    background-position: center;
+    box-shadow: 0px 0px 4px 5px #FFFFFF;
+    text-shadow: 0px 0px 7px #FFFFFF;
+    outline-width: medium;
+    outline-style: double;
+    align-content: center;
+    vertical-align: middle;
+}
+
+.wrapper form .row:nth-child(2) label {
+    font-size: 20px;
+}
+
+.wrapper form :where(textarea, button) {
+    margin-top: 20px;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+}
+
+.wrapper form .row textarea {
+    resize: none;
+    height: 140px;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 10px;
+    border: 1px solid #000;
+    opacity: 1;
+    vertical-align: middle;
+    background-color: #5e9abb;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    font-size: large;
+}
+
+.wrapper form .row textarea::-webkit-scrollbar {
+    width: 0px;
+}
+
+.wrapper form .row .outer {
+    height: 47px;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    border-radius: 6px;
+    justify-content: center;
+    border: 1px solid #6562AB;
+}
+
+.wrapper form button {
+    height: 52px;
+    width: 200px;
+    align-items: center;
+    color: #000;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #c200a8;
+    border-radius: 4px;
+    font-family: 'Shantell-Sans', sans-serif;
+    border: 3px double #00d5ff;
+    box-shadow: 0px 0px 2px 2px #00d5ff;
+    outline-style: double #ffffff;
+    vertical-align: middle;
+}
+
+form button:hover span:nth-child(1){
+filter: blur(7px);
+}
+
+form button:hover span:nth-child(2){
+filter: blur(14px);
+}
+form button:hover{
+background: linear-gradient(#5e6bbb, #805ebb, #5e9abb);
+animation: rotate 1.5s linear infinite; 
+}
+
+@media(max-width: 400px) {
+    .wrapper {
+        max-width: 345px;
+        width: 100%;	
+    }
+}
+</style>
+<script>
+	const content = document.getElementById("text1");
+        const btnArea = document.getElementById("btn1");
+
+        btnArea.addEventListener("click", () => {
+        const utterance = new SpeechSynthesisUtterance(content.value);
+        window.speechSynthesis.speak(utterance);
+        });;
+</script>
+</body>
+</html>
